@@ -1,3 +1,26 @@
 .App {
   text-align: center;
+
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+}
+
+.content-wrapper {
+  grid-column-start: 2;
+  margin: 2px;
+}
+
+ul {
+  text-align: center;
+  list-style-position: inside;
+}
+
+.upload-button {
+  border: 1px solid var(--accent-color);
+  height: fit-content;
+  margin: 2px;
+  cursor: pointer;
 }

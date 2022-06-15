@@ -1,0 +1,16 @@
+.navbar {
+  border-bottom: solid 2px var(--accent-color);
+  font-size: 1.5em;
+  display: grid;
+  grid-template-columns: 2fr repeat(3, fr);
+}
+
+.navbar-item1 {
+  grid-column-start: 2;
+}
+.navbar-item2 {
+  grid-column-start: 3;
+}
+.navbar-item3 {
+  grid-column-start: 4;
+}
