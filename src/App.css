@@ -1,6 +1,8 @@
 .App {
   text-align: center;
-
+  background-color: var(--body-bg);
+  margin: 0;
+  min-height: 100vh;
 }
 
 .body {
@@ -10,8 +12,12 @@
 
 .content-wrapper {
   grid-column-start: 2;
-  margin: 2px;
-}
+  overflow: hidden;
+  min-width: 300px;
+  margin: var(--global-margin);
+  border-radius: 20px;
+  border: 1px dashed var(--accent-color)
+  }
 
 ul {
   text-align: center;
@@ -21,6 +27,8 @@ ul {
 .upload-button {
   border: 1px solid var(--accent-color);
   height: fit-content;
-  margin: 2px;
+  margin: var(--global-margin);
   cursor: pointer;
 }
+
+/* * {pointer-events: none;} */

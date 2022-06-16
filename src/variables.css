@@ -1,3 +1,6 @@
 :root {
-  --accent-color: rgb(79, 182, 248);
+  --accent-color: rgb(180, 196, 252);
+  --secondary-color: rgba(180, 195, 252, 0.661);
+  --global-margin: 2px;
+  --body-bg: #f5f8ff;
 }

@@ -1,7 +1,7 @@
 input {
   width: 70%;
   height: fit-content;
-  margin: 2px;
+  margin: var(--global-margin);
   padding: 10px;
   box-sizing: border-box;
   border: solid 1px #ccc;
@@ -10,7 +10,7 @@ input {
 
 input:focus {
   position:relative;
-  margin: 2 px;
+  margin: var(--global-margin);
   outline: none !important;
   border: solid 1px black;
 }

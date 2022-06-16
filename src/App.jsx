@@ -1,29 +1,27 @@
 import './App.css';
 import { Navbar } from './components/Navbar/Navbar';
-import { uploadFile } from './utilities/text_parser/parser';
 import { store } from './store/index';
 import { Highlight } from './components/Highlight/Highlight';
+import { DropZone } from './components/DropZone/DropZone';
+import { useRef } from 'react';
 // import { useEffect, useRef } from 'react';
 
 function App() {
+  const wrapperRef = useRef(null);
+
   const getHighlights = () => {
     return store.getState().highlights.highlights;
   }
-
   const highlights = getHighlights();
+
   // console.log(highlights);
   let key = 0;
   return (
     <div className="App" store={store}>
       <Navbar />
       <div className='body'>
-        
-          <label className='upload-button'>
-            <input name="upload" id="input-highlights" type="file" onChange={(e) => uploadFile(e)} style={{display: "none"}}></input>
-              Upload "My Clipping.txt"
-          </label>
-       
-        <div className='content-wrapper'>{
+          <DropZone className='upload-button' />
+        <div className='content-wrapper' ref={wrapperRef}>{
           highlights
           ? getHighlights().map( (item) => 
                 <Highlight key={key++} item={item} />
