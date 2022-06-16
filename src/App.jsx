@@ -14,7 +14,6 @@ function App() {
   }
   const highlights = getHighlights();
 
-  // console.log(highlights);
   let key = 0;
   return (
     <div className="App" store={store}>
@@ -24,7 +23,7 @@ function App() {
         <div className='content-wrapper' ref={wrapperRef}>{
           highlights
           ? getHighlights().map( (item) => 
-                <Highlight key={key++} item={item} />
+                <Highlight key={key++} {...item} />
             )
           : <p>Data dosn't load yet</p>
         }

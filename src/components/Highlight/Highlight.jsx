@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './highlight.module.css'
 
-export const Highlight = ({item}) => {
+export const Highlight = ({title, highlight}) => {
   return (
     <div className={styles.wrapper}>
-      <b>{item.title}</b><br/>
-      {item.highlight}
+      <b>{title.title + ' '}</b><i>({title.author})</i><br/>
+      {highlight}
     </div>
   )
 }
