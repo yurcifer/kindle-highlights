@@ -1,4 +1,5 @@
 .drop-file-input {
+  /* pointer-events: all; */
   position: relative;
   max-width: 400px;
   min-width: 100px;

@@ -4,23 +4,24 @@ import { uploadFile } from '../../utilities/text_parser/parser';
 
 export const DropZone = () => {
 
+  let counter = 0;
+
   const wrapperRef = useRef(null);
 
-  const onDragEnter = () => wrapperRef.current.classList.add(styles.dragover);
+  const onDragEnter = () => {
+    counter++
+    wrapperRef.current.classList.add(styles.dragover);
+  }
 
-  const onDragLeave = () => wrapperRef.current.classList.remove(styles.dragover);
+  const onDragLeave = () => {
+    counter--;
+    if (counter === 0) wrapperRef.current.classList.remove(styles.dragover);
+  }
 
   const onDrop = () => wrapperRef.current.classList.remove(styles.dragover);
 
-  function preventDefaults(e) {
-    e.preventDefault();
-    e.stopPropagation();
-  }
-
-  // TODO: preveng dropping file out of form from opening it in browser
-  // window.addEventListener('drop', preventDefaults);
-  // window.addEventListener('dragover', onDragEnter);
-  // window.addEventListener('dragleave', onDragLeave);
+  window.addEventListener('dragenter', onDragEnter);
+  window.addEventListener('dragleave', onDragLeave);
 
   const onFileDrop = (e) => {
     console.log('file drop')
