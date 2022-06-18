@@ -1,16 +1,22 @@
 .navbar {
   border-bottom: solid 2px var(--accent-color);
-  font-size: 1.5em;
   display: grid;
   grid-template-columns: 2fr repeat(3, fr);
 }
 
-.navbar-item1 {
+.item {
+  cursor: pointer;
+  background-color: rgba(223, 223, 223, 0.329);
+  border: solid 1px var(--accent-color);
+  line-height: 200%;
+}
+
+.item1 {
   grid-column-start: 2;
 }
-.navbar-item2 {
+.item2 {
   grid-column-start: 3;
 }
-.navbar-item3 {
+.item3 {
   grid-column-start: 4;
 }

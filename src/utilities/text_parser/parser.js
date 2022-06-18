@@ -65,7 +65,7 @@ export const uploadFile = async (e) => {
     })
 
     store.dispatch({type: 'INIT', data: highlighsArray});
-    console.log(store.getState().highlights.highlights)
+    // console.log(store.getState().highlights.highlights)
   };
   reader.readAsText(e.target.files[0]);
 
