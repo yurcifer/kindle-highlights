@@ -2,19 +2,27 @@ import React from 'react';
 import styles from './highlight.module.css'
 import { store } from '../../store';
 
-//TODO: подсветка всех вхождений, а не только первых
-//TODO: подсветка независимо от регистра
 export const Highlight = ({title, highlight}) => {
 
-  function textHighlight (text) {
-    const query = store.getState().searchQuery;
-    const index = text.indexOf(query);
-    if (index >= 0) { 
-     const result = text.substring(0, index) + "<mark>" + text.substring(index,index+query.length) + "</mark>" + text.substring(index + query.length);
-     return result;
-    } else {
-      return text;
-    }
+  const highlightNextEntry = (text, queryLength, index) => {
+    return (
+      text.substring(0, index) 
+      + "<mark>" + text.substring(index, index + queryLength) + "</mark>" 
+      + text.substring(index + queryLength)
+    );
+  }
+
+  // function to mark all searched symbols
+  function textHighlight (text, fromIndex = 0) {
+    const markTextLength = 13;
+    const query = store.getState().searchQuery.toLowerCase();
+
+    if (!query.length) return text;
+    let index = text.toLowerCase().indexOf(query, fromIndex);
+    if (index === -1) return text;
+
+    const modifiedText = highlightNextEntry(text, query.length, index);
+    return textHighlight(modifiedText, index + query.length + markTextLength);
   }
 
   return (

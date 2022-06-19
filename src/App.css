@@ -15,7 +15,9 @@
   grid-column-start: 2;
   overflow: hidden;
   min-width: 300px;
-  margin: var(--global-margin);
+  min-height: 90vh;
+  margin-left: var(--global-margin);
+  margin-right: var(--global-margin);
   border-radius: 20px;
   border: 1px dashed var(--accent-color);
 }

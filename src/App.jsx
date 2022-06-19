@@ -45,7 +45,6 @@ function App() {
     return result;
   }
 
-  let key = 0;
   return (
     <div className="App" store={store}>
       <Navbar search={search} />
@@ -53,8 +52,8 @@ function App() {
           <DropZone className='upload-button' />
         <div className='content-wrapper' >{
           highlights.length
-          ? search(highlights, store.getState().searchQuery).slice(0, pageLength.current).map( (item) => 
-                <Highlight key={key++} {...item} />
+          ? search(highlights, store.getState().searchQuery).slice(0, pageLength.current).map( (item, index) => 
+                <Highlight key={index} {...item} />
             )
           : <p>Data dosn't load yet</p>
         }

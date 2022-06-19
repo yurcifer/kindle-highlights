@@ -2,10 +2,13 @@
   /* pointer-events: all; */
   position: relative;
   max-width: 400px;
-  min-width: 100px;
+  min-width: 150px;
   height: 200px;
   border: 2px dashed var(--border-color);
   border-radius: 20px;
+  border: 1px dashed rgba(0, 0, 0, 0.1);
+  margin-left: var(--global-margin);
+
 
   display: flex;
   align-items: center;
@@ -29,8 +32,8 @@
 .drop-file-input.dragover {
   opacity: 0.6;
   border: 1px dashed black;
-  margin: 1px;
-  /* box-sizing: content-box; */
+  margin-left: var(--global-margin);
+  /* box-sizing: contimage.pngent-box; */
 }
 
 .drop-file-input__label {
