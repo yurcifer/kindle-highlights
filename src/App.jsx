@@ -1,13 +1,14 @@
 import './App.css';
 import { Navbar } from './components/Navbar/Navbar';
-import { store } from './store/index';
 import { Highlight } from './components/Highlight/Highlight';
 import { DropZone } from './components/DropZone/DropZone';
 import { useEffect, useRef, useState } from 'react';
+import { useStore } from 'react-redux';
 // import { useEffect, useRef } from 'react';
 
 function App() {
 
+  const store = useStore();
   //TODO: find more elegant way to force render
   const [value, setValue] = useState(0); // state to force render
   const pageLength = useRef(50)
@@ -46,20 +47,20 @@ function App() {
   }
 
   return (
-    <div className="App" store={store}>
-      <Navbar search={search} />
-      <div className='body'>
-          <DropZone className='upload-button' />
-        <div className='content-wrapper' >{
-          highlights.length
-          ? search(highlights, store.getState().searchQuery).slice(0, pageLength.current).map( (item, index) => 
-                <Highlight key={index} {...item} />
-            )
-          : <p>Data dosn't load yet</p>
-        }
+      <div className="App" store={store}>
+        <Navbar search={search} />
+        <div className='body'>
+            <DropZone className='upload-button' />
+          <div className='content-wrapper' >{
+            highlights.length
+            ? search(highlights, store.getState().searchQuery).slice(0, pageLength.current).map( (item, index) => 
+                  <Highlight key={index} {...item} />
+              ) || <p>wtf)</p>
+            : <p>Data dosn't load yet</p>
+          }
+          </div>
         </div>
       </div>
-    </div> 
   );
 }
 

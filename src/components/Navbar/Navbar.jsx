@@ -1,9 +1,9 @@
-import React from 'react';
+import { useStore } from 'react-redux';
 import { Input } from '../UI/Input/Input';
 import styles from './navbar.module.css'
-import { store } from '../../store';
 
 export const Navbar = ({search}) => {
+  const store = useStore();
   return (
     <div className={styles.navbar}>
       <Input 

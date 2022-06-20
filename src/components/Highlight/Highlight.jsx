@@ -1,8 +1,10 @@
 import React from 'react';
 import styles from './highlight.module.css'
-import { store } from '../../store';
+import { useStore } from 'react-redux'
 
 export const Highlight = ({title, highlight}) => {
+
+  const store = useStore();
 
   const highlightNextEntry = (text, queryLength, index) => {
     return (

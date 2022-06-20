@@ -1,4 +1,4 @@
-import {store} from './../../store/index.js'
+import { store } from './../../store/index.js'
 
 const cutSideSpaces = (str) => {
   return str.replace(/^\s+|\s+$/g, '')

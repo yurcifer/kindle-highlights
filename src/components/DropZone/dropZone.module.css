@@ -42,3 +42,15 @@
   font-weight: 600;
   padding: 10px;
 }
+
+@media (max-width: 500px) {
+  .drop-file-input {
+    max-width: 100vh;
+    max-height: 100px;
+    
+  }
+  /* TODO: убрать текст в JS */
+  .drop-file-input__label p {
+    color: var(--body-bg)
+  }
+}
