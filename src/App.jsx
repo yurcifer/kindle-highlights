@@ -4,6 +4,7 @@ import { Highlight } from './components/Highlight/Highlight';
 import { DropZone } from './components/DropZone/DropZone';
 import { useEffect, useRef, useState } from 'react';
 import { useStore } from 'react-redux';
+import { ToPageTop } from './components/UI/ToPageTop/ToPageTop';
 // import { useEffect, useRef } from 'react';
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
             : <p>Data dosn't load yet</p>
           }
           </div>
+          <ToPageTop />
         </div>
       </div>
   );

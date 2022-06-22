@@ -1,0 +1,33 @@
+.btn {
+  position: fixed;
+	right: 1%;
+  bottom: 0;
+  display: block;  
+  padding: 1em;
+  margin: 1em;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+  visibility: visible;
+  opacity: 0.4;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+.btn:hover rect.two, 
+.btn:hover path.three, 
+.btn:hover rect.middle, 
+.btn:focus rect.two, 
+.btn:focus path.three, 
+.btn:focus rect.middle {
+  fill: #9cb0f9;
+}
+
+rect.two, path.three, rect.middle {
+  fill: var(--accent-color);
+}
+
+.back {
+  fill: var(--body-bg);
+}
