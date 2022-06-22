@@ -1,7 +1,7 @@
-export const searchQueryReducer = (state = '', action) => {
+export const searchQueryReducer = (state = '', action = null) => {
   switch (action.type) {
-    case 'SEARCH': 
+    case 'SEARCH':
       return action.query;
     default: return state;
   }
-}
+};
