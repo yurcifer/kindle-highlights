@@ -1,12 +1,11 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import './variables.css'
-import App from './App';
-import { Provider} from 'react-redux';
+import './variables.css';
+import { Provider } from 'react-redux';
 import { store } from './store';
-
-
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const render = () => {
@@ -14,10 +13,10 @@ const render = () => {
     // <React.StrictMode>
     <Provider store={store}>
       <App />
-    </Provider>
+    </Provider>,
     // </React.StrictMode>
   );
-}
+};
 
 store.subscribe(render);
 render();
