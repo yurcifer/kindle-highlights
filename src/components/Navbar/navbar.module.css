@@ -2,7 +2,7 @@
   border-bottom: solid 2px var(--accent-color);
   display: grid;
   grid-template-columns: 2fr repeat(3, fr);
-  margin-bottom: var(--global-margin);
+  margin-bottom: 50px;
 }
 
 .item {
