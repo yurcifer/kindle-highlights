@@ -7,6 +7,7 @@ import { Navbar } from './components/Navbar/Navbar';
 import { Highlight } from './components/Highlight/Highlight';
 import { DropZone } from './components/DropZone/DropZone';
 import { ToPageTop } from './components/UI/ToPageTop/ToPageTop';
+import { Modal } from './components/Modal/Modal';
 // import { useEffect, useRef } from 'react';
 
 function App() {
@@ -19,8 +20,8 @@ function App() {
   const getHighlights = () => store.getState().highlights.highlights;
 
   const highlights = getHighlights() || [];
-  console.log(highlights.slice(0, 10));
-  console.log(store.getState());
+  // console.log(highlights.slice(0, 10));
+  // console.log(store.getState());
 
   const handleScroll = (e) => {
     if (
@@ -62,6 +63,7 @@ function App() {
         </div>
         <ToPageTop />
       </div>
+      {store.getState().modal ? <Modal /> : ''}
     </div>
   );
 }
