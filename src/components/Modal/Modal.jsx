@@ -1,15 +1,16 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useStore } from 'react-redux/es/exports';
 import styles from './modal.module.css';
 
 // eslint-disable-next-line react/prop-types
 export const Modal = () => {
-  // const [forceUseEffect, setForceUseEffect] = useState(0);
-  const randomHighlight = useRef();
-
+  const [randomHighlight, setRandomHighlight] = useState(null);
+  const modalRef = useRef();
   const store = useStore();
+  const isActive = store.getState().modal;
+
   const { highlights } = store.getState().highlights;
   const closeModal = () => {
     store.dispatch({
@@ -17,9 +18,14 @@ export const Modal = () => {
     });
   };
 
-  const randomIndex = Math.floor(Math.random() * (highlights.length - 1));
-  randomHighlight.current = highlights[randomIndex];
-  console.log(randomHighlight.current);
+  useEffect(() => {
+    // this condition is matter for transition on modal close
+    // otherwise text will update during animation
+    if (isActive === true) {
+      const randomIndex = Math.floor(Math.random() * (highlights.length - 1));
+      setRandomHighlight(highlights[randomIndex]);
+    }
+  }, [isActive]);
 
   const formatedHighlight = ({ highlight, title }) => (
     <>
@@ -32,14 +38,18 @@ export const Modal = () => {
 
   return (
     <div
-      className={[styles.modal, styles.active].join(' ')}
+      ref={modalRef}
       onClick={closeModal}
       role="button"
       tabIndex="0"
       onKeyUp={closeModal}
+      className={isActive ? [styles.modal, styles.active].join(' ') : styles.modal}
     >
-      <div className={styles.content} onClick={(e) => e.stopPropagation()}>
-        {randomHighlight.current ? formatedHighlight(randomHighlight.current) : 'error'}
+      <div
+        className={isActive ? [styles.modal__content, styles.active].join(' ') : styles.modal__content}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {randomHighlight ? formatedHighlight(randomHighlight) : 'error'}
       </div>
     </div>
   );

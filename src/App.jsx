@@ -20,8 +20,7 @@ function App() {
   const getHighlights = () => store.getState().highlights.highlights;
 
   const highlights = getHighlights() || [];
-  // console.log(highlights.slice(0, 10));
-  // console.log(store.getState());
+  // console.log(highlights.slice(0
 
   const handleScroll = (e) => {
     if (
@@ -63,7 +62,7 @@ function App() {
         </div>
         <ToPageTop />
       </div>
-      {store.getState().modal ? <Modal /> : ''}
+      <Modal />
     </div>
   );
 }
