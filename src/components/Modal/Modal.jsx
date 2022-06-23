@@ -19,7 +19,7 @@ export const Modal = () => {
   };
 
   useEffect(() => {
-    // this condition is matter for transition on modal close
+    // this condition is matter for transition effect on modal close
     // otherwise text will update during animation
     if (isActive === true) {
       const randomIndex = Math.floor(Math.random() * (highlights.length - 1));
