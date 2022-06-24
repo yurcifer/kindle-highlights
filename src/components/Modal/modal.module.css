@@ -38,7 +38,6 @@
   transform: scale(0.5);
   transition: 400ms;
   transition-timing-function: ease-out;
-  pointer-events: none;
 }
 
 .modal__content.active {

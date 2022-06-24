@@ -40,9 +40,6 @@ export const Modal = () => {
     <div
       ref={modalRef}
       onClick={closeModal}
-      role="button"
-      tabIndex="0"
-      onKeyUp={closeModal}
       className={isActive ? [styles.modal, styles.active].join(' ') : styles.modal}
     >
       <div
