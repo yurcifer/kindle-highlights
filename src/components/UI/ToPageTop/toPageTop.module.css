@@ -29,5 +29,5 @@ rect.two, path.three, rect.middle {
 }
 
 .back {
-  fill: var(--body-bg);
+  fill: rgba(0,0,0, 0.0);
 }
