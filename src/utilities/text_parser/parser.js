@@ -30,7 +30,6 @@ const splitTitle = (str) => {
 };
 
 export const uploadFile = async (e) => {
-  e.preventDefault();
   const reader = new FileReader();
 
   // eslint-disable-next-line no-shadow
