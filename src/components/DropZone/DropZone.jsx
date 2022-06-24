@@ -8,6 +8,11 @@ export const DropZone = () => {
 
   const wrapperRef = useRef(null);
 
+  const preventDefaults = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
   const onDragEnter = () => {
     counter++;
     wrapperRef.current.classList.add(styles.dragover);
@@ -18,15 +23,15 @@ export const DropZone = () => {
     if (counter === 0) wrapperRef.current.classList.remove(styles.dragover);
   };
 
-  const onDrop = () => wrapperRef.current.classList.remove(styles.dragover);
+  const onDrop = (e = null) => {
+    if (e.target.tagName !== 'INPUT') preventDefaults(e);
+    wrapperRef.current.classList.remove(styles.dragover);
+  };
 
   window.addEventListener('dragenter', onDragEnter);
   window.addEventListener('dragleave', onDragLeave);
-
-  const onFileDrop = (e) => {
-    console.log('file drop');
-    uploadFile(e);
-  };
+  window.addEventListener('dragover', (e) => preventDefaults(e));
+  window.addEventListener('drop', (e) => onDrop(e));
 
   return (
     <div
@@ -43,7 +48,7 @@ export const DropZone = () => {
         </svg>
         <p>Drag & Drop "My clippings.txt" here</p>
       </div>
-      <input type="file" value="" onChange={onFileDrop} />
+      <input type="file" value="" onChange={(e) => uploadFile(e)} />
     </div>
   );
 };
