@@ -33,7 +33,7 @@ export const Highlight = ({ title, highlight }) => {
   }
 
   const copyToClipboard = () => {
-    const citation = `"${highlight}" - ${title}`;
+    const citation = `"${highlight}" - ${title.author}`;
     try {
       navigator.clipboard.writeText(citation);
       setCopyBtnState(copiedLabel);
