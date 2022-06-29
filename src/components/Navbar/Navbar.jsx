@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useStore } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { Input } from '../UI/Input/Input';
 import styles from './navbar.module.css';
 
@@ -23,18 +24,21 @@ export const Navbar = () => {
           });
         }}
       />
-      <span className={[styles.item, styles.item1].join(' ')}>Navbar</span>
-      <span className={[styles.item, styles.item2].join(' ')}>Navbar</span>
-      <span
-        className={[styles.item, styles.item3].join(' ')}
+      <NavLink to="/" className={[styles.item, styles.item1].join(' ')}>
+        Main
+      </NavLink>
+      <button
+        to="#"
+        className={[styles.item, styles.item2].join(' ')}
         onClick={openModal}
-        role="button"
-        tabIndex="0"
-        onKeyPress={openModal}
         triger={trigerModal}
+        type="button"
       >
         Get Random Qoute
-      </span>
+      </button>
+      <NavLink to="/about" className={[styles.item, styles.item3].join(' ')}>
+        About
+      </NavLink>
     </div>
   );
 };
