@@ -12,6 +12,8 @@ export const Main = () => {
   const [, setForceRender] = useState(0); // state to force render
   const pageLength = useRef(50);
   const store = useStore();
+  const highlights = store.getState().highlights.highlights || [];
+
   const handleScroll = (e) => {
     if (
       window.innerHeight + e.target.documentElement.scrollTop + 1
@@ -22,6 +24,11 @@ export const Main = () => {
     }
   };
 
+  //
+  const search = (highlightsArr, query) => highlightsArr.filter((item) => JSON.stringify(item)
+    .toLowerCase()
+    .includes(query.toLowerCase()));
+
   useEffect(() => {
     window.addEventListener('dragleave', (e) => {
       e.preventDefault();
@@ -29,13 +36,7 @@ export const Main = () => {
     });
     window.addEventListener('scroll', handleScroll);
   }, []);
-  const getHighlights = () => store.getState().highlights.highlights;
-  const highlights = getHighlights() || [];
-
-  const search = (highlightsArr, query) => highlightsArr.filter((item) => JSON.stringify(item)
-    .toLowerCase()
-    .includes(query.toLowerCase()));
-  let index = 0;
+  // if (highlights.length) console.log(highlights);
   return (
     <div className={styles.main__body}>
       <DropZone className="upload-button" />
@@ -43,10 +44,9 @@ export const Main = () => {
         {highlights.length ? (
           search(highlights, store.getState().searchQuery)
             .slice(0, pageLength.current)
-            .map((item) => <Highlight key={index++} {...item} />)
+            .map((item) => <Highlight key={item.hash} {...item} />)
         ) : (
-          // eslint-disable-next-line react/no-unescaped-entities
-          <p>Data dosn't load yet</p>
+          <p>Data dosn&apos;t load yet</p>
         )}
       </div>
       <ToPageTop />
