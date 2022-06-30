@@ -1,3 +1,4 @@
+import { digest } from 'object-sha';
 import { store } from '../../store/index';
 
 const cutSideSpaces = (str) => str.replace(/^\s+|\s+$/g, '');
@@ -34,7 +35,7 @@ export const uploadFile = async (e) => {
 
   // eslint-disable-next-line no-shadow
   reader.onload = async (e) => {
-    const text = (e.target.result);
+    const text = e.target.result;
 
     const segments = text.split('==========');
     const highlighsArray = [];
@@ -43,24 +44,34 @@ export const uploadFile = async (e) => {
       const splitted = item.replace(/\r/g, '').split(/\n/);
       // delete empty lines
       // eslint-disable-next-line no-shadow
-      splitted.forEach((element, index) => {
-        if (element.length === 0) {
+      splitted.forEach((item, index) => {
+        if (item.length === 0) {
           splitted.splice(index, 1);
         }
       });
-      // I saw some empty highlights (may be created by missclick), so added this string
+      // I saw some empty highlights in kindle file (may be created by missclick),
+      // so added next string
       if (!splitted[2]) return;
-      highlighsArray.push(
-        {
-          title: splitTitle(splitted[0]),
-          meta: splitMetadata(splitted[1]),
-          highlight: splitted[2],
-        },
-      );
+      const highlight = {
+        title: splitTitle(splitted[0]),
+        meta: splitMetadata(splitted[1]),
+        highlight: splitted[2],
+      };
+      // TODO: make next function pure, or handle promises without async await
+      // eslint-disable-next-line func-names
+      (async function () {
+        const result = await digest(highlight);
+        highlight.hash = result;
+        // sometimes highlights have dublicates (with exactly same creation time hh:mm:ss),
+        // so here we ensure next highligh isn't duplicate
+        const prevHighlight = highlighsArray[highlighsArray.length - 1] || { hash: null };
+        if (prevHighlight.hash !== highlight.hash) {
+          highlighsArray.push(highlight);
+        }
+      }());
     });
-
-    store.dispatch({ type: 'INIT', data: highlighsArray });
-    // console.log(store.getState().highlights.highlights)
+    // added dispatch to macrotask queue, because hashes calculetes in microtask queue
+    setTimeout(() => store.dispatch({ type: 'INIT', data: highlighsArray }));
   };
   reader.readAsText(e.target.files[0]);
 };
