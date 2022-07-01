@@ -4,8 +4,8 @@ import './App.css';
 import React from 'react';
 import { useStore } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-import { Navbar } from './components/Navbar/Navbar';
-import { Modal } from './components/Modal/Modal';
+import Navbar from './components/Navbar/Navbar';
+import Modal from './components/Modal/Modal';
 // import { useEffect, useRef } from 'react';
 
 function App() {
