@@ -3,6 +3,7 @@ import React, { useRef } from 'react';
 import styles from './dropZone.module.css';
 import { uploadFile } from '../../utilities/text_parser/parser';
 
+// TODO Add no-drop cursor
 export const DropZone = () => {
   let counter = 0;
 

@@ -5,7 +5,7 @@ import { DropZone } from '../../components/DropZone/DropZone';
 import { Highlight } from '../../components/Highlight/Highlight';
 import { ToPageTop } from '../../components/UI/ToPageTop/ToPageTop';
 import styles from './main.module.css';
-
+// TODO: сделать это более читаемым
 // eslint-disable-next-line react/prop-types
 export const Main = () => {
   // TODO: find more elegant way to force render
@@ -36,6 +36,7 @@ export const Main = () => {
     });
     window.addEventListener('scroll', handleScroll);
   }, []);
+
   // if (highlights.length) console.log(highlights);
   return (
     <div className={styles.main__body}>

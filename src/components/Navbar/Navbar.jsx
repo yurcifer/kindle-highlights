@@ -34,7 +34,7 @@ export const Navbar = () => {
         triger={trigerModal}
         type="button"
       >
-        Get Random Qoute
+        Random Highlight
       </button>
       <NavLink to="/about" className={[styles.item, styles.item3].join(' ')}>
         About

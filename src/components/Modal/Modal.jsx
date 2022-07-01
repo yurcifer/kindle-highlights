@@ -18,12 +18,16 @@ export const Modal = () => {
     });
   };
 
+  const getRandomHighlight = () => {
+    const randomIndex = Math.floor(Math.random() * (highlights.length - 1));
+    setRandomHighlight(highlights[randomIndex]);
+  };
+
   useEffect(() => {
     // this condition is matter for transition effect on modal close
     // otherwise text will update during animation
     if (isActive === true) {
-      const randomIndex = Math.floor(Math.random() * (highlights.length - 1));
-      setRandomHighlight(highlights[randomIndex]);
+      getRandomHighlight();
     }
   }, [isActive]);
 
@@ -47,6 +51,7 @@ export const Modal = () => {
         onClick={(e) => e.stopPropagation()}
       >
         {randomHighlight ? formatedHighlight(randomHighlight) : 'error'}
+        <button type="button" onClick={getRandomHighlight}>Another Highlight</button>
       </div>
     </div>
   );
