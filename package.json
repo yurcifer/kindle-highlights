@@ -1,7 +1,6 @@
 {
   "name": "kindle-highlights",
   "version": "0.1.0",
-  "prettier": "prettier-airbnb-config",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
@@ -19,6 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "lint": "eslint --ext .js, .jsx src --fix",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -44,9 +44,10 @@
   "devDependencies": {
     "eslint": "^8.18.0",
     "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-jsx-a11y": "^6.6.0",
+    "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^1.19.1",
     "prettier-airbnb-config": "^1.0.0"

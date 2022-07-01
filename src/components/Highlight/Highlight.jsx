@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { useStore } from 'react-redux';
 import styles from './highlight.module.css';
 
-export const Highlight = ({ title, highlight }) => {
+export default function Highlight({ title, highlight }) {
   const store = useStore();
   const copyLabel = 'Copy to clipboard';
   const copiedLabel = 'Copied';
@@ -13,11 +13,11 @@ export const Highlight = ({ title, highlight }) => {
 
   const [copyBtnState, setCopyBtnState] = useState(copyLabel);
 
-  const highlightNextEntry = (text, queryLength, index) => (
-    text.substring(0, index)
-    + '<mark>' + text.substring(index, index + queryLength) + '</mark>'
-    + text.substring(index + queryLength)
-  );
+  const highlightNextEntry = (text, queryLength, index) => text.substring(0, index)
+    + '<mark>'
+    + text.substring(index, index + queryLength)
+    + '</mark>'
+    + text.substring(index + queryLength);
 
   // function to mark all searched symbols
   function textHighlight(text, fromIndex = 0) {
@@ -52,7 +52,9 @@ export const Highlight = ({ title, highlight }) => {
       <i dangerouslySetInnerHTML={{ __html: textHighlight(`(${title.author})`) }} />
       <br />
       <div dangerouslySetInnerHTML={{ __html: textHighlight(highlight) }} />
-      <button onClick={copyToClipboard} type="button">{copyBtnState}</button>
+      <button onClick={copyToClipboard} type="button">
+        {copyBtnState}
+      </button>
     </div>
   );
-};
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useStore } from 'react-redux/es/exports';
-import { Highlight } from '../Highlight/Highlight';
+import Highlight from '../Highlight/Highlight';
 
 // eslint-disable-next-line react/prop-types
 export default function HighlightsList({ pageLength }) {
@@ -18,13 +18,11 @@ export default function HighlightsList({ pageLength }) {
         search(highlights, store.getState().searchQuery)
           .slice(0, pageLength)
           .map((item) => (
-            <Highlight
-              key={item.hash}
-              highlight={item.highlight}
-              title={item.title}
-            />
+            <Highlight key={item.hash} highlight={item.highlight} title={item.title} />
           ))
-      ) : <p>Data dosn&apos;t load yet</p>}
+      ) : (
+        <p>Data dosn&apos;t load yet</p>
+      )}
     </div>
   );
 }

@@ -2,8 +2,10 @@
 import React from 'react';
 import styles from './input.module.css';
 
-export const Input = (props) => (
-  <div className={styles.wrapper}>
-    <input placeholder="Search here" {...props} />
-  </div>
-);
+export default function Input(props) {
+  return (
+    <div className={styles.wrapper}>
+      <input placeholder="Search here" {...props} />
+    </div>
+  );
+}

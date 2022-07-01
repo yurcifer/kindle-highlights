@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useRef, useState } from 'react';
-import { DropZone } from '../../components/DropZone/DropZone';
+import DropZone from '../../components/DropZone/DropZone';
 import HighlightsList from '../../components/HighlightsList/HighlightsList';
-import { ToPageTop } from '../../components/UI/ToPageTop/ToPageTop';
+import ToPageTop from '../../components/UI/ToPageTop/ToPageTop';
 import styles from './main.module.css';
 // TODO: сделать это более читаемым
 // eslint-disable-next-line react/prop-types
-export const Main = () => {
+export default function Main() {
   // TODO: find more elegant way to force render
   const [, setForceRender] = useState(0); // state to force render
   const pageLength = useRef(50);
@@ -38,4 +38,4 @@ export const Main = () => {
       <ToPageTop />
     </div>
   );
-};
+}

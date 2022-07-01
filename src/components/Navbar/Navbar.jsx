@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useStore } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { Input } from '../UI/Input/Input';
+import Input from '../UI/Input/Input';
 import styles from './navbar.module.css';
 
-export const Navbar = () => {
+export default function Navbar() {
   const [trigerModal, setTirgerModal] = useState(0);
   const store = useStore();
   const openModal = () => {
@@ -41,4 +41,4 @@ export const Navbar = () => {
       </NavLink>
     </div>
   );
-};
+}

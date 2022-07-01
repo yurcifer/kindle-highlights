@@ -75,3 +75,5 @@ export const uploadFile = async (e) => {
   };
   reader.readAsText(e.target.files[0]);
 };
+
+export default uploadFile;

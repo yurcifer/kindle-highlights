@@ -5,7 +5,7 @@ import { useStore } from 'react-redux/es/exports';
 import styles from './modal.module.css';
 
 // eslint-disable-next-line react/prop-types
-export const Modal = () => {
+export default function Modal() {
   const [randomHighlight, setRandomHighlight] = useState(null);
   const modalRef = useRef();
   const store = useStore();
@@ -36,7 +36,9 @@ export const Modal = () => {
       <p>{highlight}</p>
       <b>{title.author}</b>
       {' '}
-      <p><i>{title.title}</i></p>
+      <p>
+        <i>{title.title}</i>
+      </p>
     </>
   );
 
@@ -47,12 +49,16 @@ export const Modal = () => {
       className={isActive ? [styles.modal, styles.active].join(' ') : styles.modal}
     >
       <div
-        className={isActive ? [styles.modal__content, styles.active].join(' ') : styles.modal__content}
+        className={
+          isActive ? [styles.modal__content, styles.active].join(' ') : styles.modal__content
+        }
         onClick={(e) => e.stopPropagation()}
       >
         {randomHighlight ? formatedHighlight(randomHighlight) : 'error'}
-        <button type="button" onClick={getRandomHighlight}>Another Highlight</button>
+        <button type="button" onClick={getRandomHighlight}>
+          Another Highlight
+        </button>
       </div>
     </div>
   );
-};
+}
