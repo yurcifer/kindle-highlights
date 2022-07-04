@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { store } from './store';
 import App from './App';
 import Main from './routes/Main/Main';
-import About from './routes/about/about';
+import About from './routes/About/About';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 function AppWithProvider() {
