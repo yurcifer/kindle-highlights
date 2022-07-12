@@ -8,6 +8,7 @@ import { store } from './store';
 import App from './App';
 import Main from './routes/Main/Main';
 import About from './routes/About/About';
+import Login from './routes/Login/Login';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 function AppWithProvider() {
@@ -24,6 +25,7 @@ const render = () => {
         <Route path="/" element={<AppWithProvider />}>
           <Route index element={<Main />} />
           <Route path="/about" element={<About />} />
+          <Route path="login" element={<Login />} />
         </Route>
       </Routes>
     </BrowserRouter>,

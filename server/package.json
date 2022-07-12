@@ -8,5 +8,8 @@
     "dev": "nodemon index.js"
   },
   "author": "Yurii Sh",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^4.7.0"
+  }
 }

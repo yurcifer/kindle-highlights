@@ -24,21 +24,26 @@ export default function Navbar() {
           });
         }}
       />
-      <NavLink to="/" className={[styles.item, styles.item1].join(' ')}>
-        Main
-      </NavLink>
-      <button
-        to="#"
-        className={[styles.item, styles.item2].join(' ')}
-        onClick={openModal}
-        triger={trigerModal}
-        type="button"
-      >
-        Random Highlight
-      </button>
-      <NavLink to="/about" className={[styles.item, styles.item3].join(' ')}>
-        About
-      </NavLink>
+      <div className={styles.link__group}>
+        <NavLink to="/" className={[styles.item, styles].join(' ')}>
+          Main
+        </NavLink>
+        <button
+          to="#"
+          className={[styles.item, styles].join(' ')}
+          onClick={openModal}
+          triger={trigerModal}
+          type="button"
+        >
+          Random Highlight
+        </button>
+        <NavLink to="/about" className={[styles.item].join(' ')}>
+          About
+        </NavLink>
+        <NavLink to="/login" className={[styles.item].join(' ')}>
+          Login
+        </NavLink>
+      </div>
     </div>
   );
 }
