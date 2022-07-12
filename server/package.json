@@ -4,12 +4,14 @@
   "description": "Server for kindle highlights",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "dev": "nodemon index.js"
   },
   "author": "Yurii Sh",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^4.7.0"
+    "express": "^4.18.1",
+    "mongodb": "^4.7.0",
+    "mongoose": "^6.4.4"
   }
 }

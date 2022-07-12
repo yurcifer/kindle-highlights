@@ -1,3 +1,3 @@
-const MONGO_IP = '158.160.6.142';
-const MONGO_LINK = `mongodb://admin:jix784imkindle@${MONGO_IP}:27017/?authSource=highlightsDB`;
-module.exports.MONGO_LINK = MONGO_LINK;
+const MONGO_IP = '51.250.103.80';
+const MONGO_LINK = `mongodb://admin:jix784imkindle@${MONGO_IP}:27017/highlightsDB?authSource=highlightsDB`;
+module.exports = MONGO_LINK;
